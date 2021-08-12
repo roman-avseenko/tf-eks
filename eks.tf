@@ -16,4 +16,9 @@ module "eks_cluster" {
   vpc_id          = module.vpc.vpc_id
 
   worker_groups_launch_template = var.eks_worker_groups_launch_template
+
+  tags = {
+    "k8s.io/cluster-autoscaler/${var.cluster_name}" = "owned"
+    "k8s.io/cluster-autoscaler/enabled"             = "TRUE"
+  }
 }
