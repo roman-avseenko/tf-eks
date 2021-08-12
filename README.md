@@ -1,3 +1,4 @@
+
 # Kubernetes cluster created by Terraform on AWS EKS
 ## Setup
 1. Clone this repo
@@ -8,13 +9,13 @@
 	> Note: the minimum permissions needed for your IAM user or IAM role to create an EKS cluster are described [here](https://github.com/terraform-aws-modules/terraform-aws-eks/blob/master/docs/iam-permissions.md)
 3. Run Terraform
 
-			terraform init
-			terraform apply
+		terraform init
+		terraform apply
 4. Update Kubernetes config
 
 		aws eks --region <region-code> update-kubeconfig --name <cluster_name>
 5. Run `autoscaler.sh`
-This script is used to install cluster autoscaler. `REGION` and `CLUSTER_NAME`  variables in script should match with `terraform.tfvars` file.
+	This script is used to install cluster autoscaler using [Helm](https://helm.sh). `REGION` and `CLUSTER_NAME`  variables in this script should match with your `terraform.tfvars` file.
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
 
