@@ -6,7 +6,7 @@
 2. Define variables
 	There is an example file `terraform.tfvars.eg`, which contains the necessary variables. You can rewrite 	their values yourself.
 	> Note: the minimum permissions needed for your IAM user or IAM role to create an EKS cluster are described [here](https://github.com/terraform-aws-modules/terraform-aws-eks/blob/master/docs/iam-permissions.md)
-	3. Run Terraform
+3. Run Terraform
 
 			terraform init
 			terraform apply
@@ -14,7 +14,7 @@
 
 		aws eks --region <region-code> update-kubeconfig --name <cluster_name>
 5. Run `autoscaler.sh`
-This script is used to install cluster autoscaler. `REGION` and `CLUSTER_NAME`  variables should match with `terraform.tfvars` file.
+This script is used to install cluster autoscaler. `REGION` and `CLUSTER_NAME`  variables in script should match with `terraform.tfvars` file.
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
 
