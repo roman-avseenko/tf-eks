@@ -14,8 +14,6 @@
 4. Update Kubernetes config
 
 		aws eks --region <region-code> update-kubeconfig --name <cluster_name>
-5. Run `autoscaler.sh`
-	This script is used to install cluster autoscaler using [Helm](https://helm.sh). `REGION` and `CLUSTER_NAME`  variables in this script should match with your `terraform.tfvars` file.
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
 
@@ -23,6 +21,7 @@
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >=1.0.0 |
 | <a name="requirement_aws"></a> [aws](#requirement\_aws) | >=3.48.0 |
+| <a name="requirement_helm"></a> [helm](#requirement\_helm) | ~>2.2.0 |
 | <a name="requirement_kubernetes"></a> [kubernetes](#requirement\_kubernetes) | ~>2.4.1 |
 
 ## Providers
@@ -30,6 +29,7 @@
 | Name | Version |
 |------|---------|
 | <a name="provider_aws"></a> [aws](#provider\_aws) | 3.53.0 |
+| <a name="provider_helm"></a> [helm](#provider\_helm) | 2.2.0 |
 
 ## Modules
 
@@ -44,6 +44,7 @@
 |------|------|
 | [aws_iam_policy.worker_autoscaling](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
 | [aws_iam_role_policy_attachment.workers_autoscaling](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
+| [helm_release.this](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release) | resource |
 | [aws_availability_zones.available](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/availability_zones) | data source |
 | [aws_eks_cluster.cluster](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/eks_cluster) | data source |
 | [aws_eks_cluster_auth.cluster](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/eks_cluster_auth) | data source |

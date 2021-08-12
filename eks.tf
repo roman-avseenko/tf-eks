@@ -17,6 +17,8 @@ module "eks_cluster" {
 
   worker_groups_launch_template = var.eks_worker_groups_launch_template
 
+  write_kubeconfig = false
+
   tags = {
     "k8s.io/cluster-autoscaler/${var.cluster_name}" = "owned"
     "k8s.io/cluster-autoscaler/enabled"             = "TRUE"
