@@ -21,6 +21,6 @@ module "eks_cluster" {
 
   tags = {
     "k8s.io/cluster-autoscaler/${var.cluster_name}" = "owned"
-    "k8s.io/cluster-autoscaler/enabled"             = "TRUE"
+    "k8s.io/cluster-autoscaler/enabled"             = "true"
   }
 }
