@@ -1,0 +1,67 @@
+version: '2.1'
+orbs:
+  terraform: circleci/terraform@3.0.0
+jobs:
+  validate:
+    executor: terraform/default
+    steps:
+      - checkout
+
+      - terraform/validate
+
+      - persist_to_workspace:
+          root: .
+          paths:
+            - .
+
+  init_plan:
+    executor: terraform/default
+    steps:
+      - attach_workspace:
+          at: .
+
+      - run:
+          command: >-
+            echo "credentials \"app.terraform.io\" {token =
+            \"$TERRAFORM_TOKEN\"}" > $HOME/.terraformrc
+          name: Create .terraformrc file locally
+
+      - terraform/init
+
+      - terraform/plan:
+          var_file: terraform.auto.tfvars
+
+      - persist_to_workspace:
+          root: .
+          paths:
+            - .
+
+  apply:
+    executor: terraform/default
+    steps:
+      - attach_workspace:
+          at: .
+
+      - run:
+          command: >-
+            echo "credentials \"app.terraform.io\" {token =
+            \"$TERRAFORM_TOKEN\"}" > $HOME/.terraformrc
+          name: Create .terraformrc file locally
+
+      - terraform/apply
+
+workflows:
+  version: 2
+  deploy_infra:
+    jobs:
+      - validate
+      - init_plan:
+          requires:
+            - validate
+      - hold_apply:
+          type: approval
+          requires:
+            - init_plan
+      - apply:
+          requires:
+            - hold_apply
