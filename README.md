@@ -4,17 +4,19 @@
 1. Clone this repo
 
 		git clone https://github.com/roman-avseenko/tf-eks.git && cd tf-eks
-2. Define variables
-	There is an example file `terraform.tfvars.eg`, which contains the necessary variables. You can rewrite 	their values yourself.
-	> Note: the minimum permissions needed for your IAM user or IAM role to create an EKS cluster are described [here](https://github.com/terraform-aws-modules/terraform-aws-eks/blob/master/docs/iam-permissions.md)
-3. Run Terraform
+2. Specify AWS IAM user credentials
+
+		aws configure
+	> Note: the minimum permissions needed for your IAM user or IAM role **to create an EKS cluster** are described [here](https://github.com/terraform-aws-modules/terraform-aws-eks/blob/master/docs/iam-permissions.md)
+3. Define variables
+		There is an example file `terraform.tfvars.eg`, which contains the necessary variables. You can rewrite 	their values yourself.
+4. Run Terraform
 
 		terraform init
 		terraform apply
-4. Update Kubernetes config
+5. Update Kubernetes config
 
 		aws eks --region <region-code> update-kubeconfig --name <cluster_name>
-<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
 
 | Name | Version |

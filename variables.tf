@@ -1,18 +1,6 @@
-#------------- Provider and configuration variabels -------------#
+#------------- AWS provider variabels -------------#
 variable "region" {
   description = "AWS region to deploy resources"
-  type        = string
-  default     = ""
-}
-
-variable "access_key" {
-  description = "AWS IAM access key"
-  type        = string
-  default     = ""
-}
-
-variable "secret_key" {
-  description = "AWS IAM secret key"
   type        = string
   default     = ""
 }

@@ -1,7 +1,32 @@
+terraform {
+  required_version = ">=1.0.0"
+
+  backend "remote" {
+    organization = "faiiinttt-tf-organization"
+    workspaces {
+      name = "tf-eks"
+    }
+  }
+
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = ">=3.48.0"
+    }
+    kubernetes = {
+      source  = "hashicorp/kubernetes"
+      version = "~>2.4.1"
+    }
+    helm = {
+      source  = "hashicorp/helm"
+      version = "~>2.2.0"
+    }
+  }
+}
+
+#Defining providers specification
 provider "aws" {
-  region     = var.region
-  access_key = var.access_key
-  secret_key = var.secret_key
+  region = var.region
 
   default_tags {
     tags = var.common_tags

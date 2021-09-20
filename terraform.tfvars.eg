@@ -1,7 +1,5 @@
 #------------------ AWS provider variables ------------------#
 region     = "eu-central-1"
-access_key = "YOUR_IAM_USER_ACCESS_KEY"
-secret_key = "YOUR_IAM_USER_SECRET_KEY"
 
 # Resource tag settings to apply across all resources handled by AWS provider
 common_tags = {
