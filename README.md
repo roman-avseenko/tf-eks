@@ -9,7 +9,7 @@
 		aws configure
 	> Note: the minimum permissions needed for your IAM user or IAM role **to create an EKS cluster** are described [here](https://github.com/terraform-aws-modules/terraform-aws-eks/blob/master/docs/iam-permissions.md)
 3. Define variables
-	There is an example file `terraform.tfvars.eg`, which contains the necessary variables. You can rewrite 	their values yourself.
+		There is an example file `terraform.tfvars.eg`, which contains the necessary variables. You can rewrite 	their values yourself.
 4. Run Terraform
 
 		terraform init
