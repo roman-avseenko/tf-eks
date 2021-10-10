@@ -9,7 +9,7 @@
 		aws configure
 	> Note: the minimum permissions needed for your IAM user or IAM role **to create an EKS cluster** are described [here](https://github.com/terraform-aws-modules/terraform-aws-eks/blob/master/docs/iam-permissions.md)
 3. Define variables
-		There is an example file `terraform.tfvars.eg`, which contains the necessary variables. You can rewrite 	their values yourself.
+	There is an example file `terraform.auto.tfvars`, which contains the necessary variables. You can rewrite their values yourself.
 4. Run Terraform
 
 		terraform init
@@ -17,6 +17,7 @@
 5. Update Kubernetes config
 
 		aws eks --region <region-code> update-kubeconfig --name <cluster_name>
+<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
 
 | Name | Version |
@@ -46,7 +47,9 @@
 |------|------|
 | [aws_iam_policy.worker_autoscaling](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
 | [aws_iam_role_policy_attachment.workers_autoscaling](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
-| [helm_release.this](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release) | resource |
+| [helm_release.cluster_autoscaler](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release) | resource |
+| [helm_release.ingress_controller](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release) | resource |
+| [helm_release.metrics_server](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release) | resource |
 | [aws_availability_zones.available](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/availability_zones) | data source |
 | [aws_eks_cluster.cluster](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/eks_cluster) | data source |
 | [aws_eks_cluster_auth.cluster](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/eks_cluster_auth) | data source |
@@ -56,7 +59,6 @@
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_access_key"></a> [access\_key](#input\_access\_key) | AWS IAM access key | `string` | `""` | no |
 | <a name="input_cidr"></a> [cidr](#input\_cidr) | The CIDR block for the VPC | `string` | `""` | no |
 | <a name="input_cluster_name"></a> [cluster\_name](#input\_cluster\_name) | Name of the EKS cluster | `string` | `""` | no |
 | <a name="input_common_tags"></a> [common\_tags](#input\_common\_tags) | Tags for all AWS provided resources | `map(string)` | `{}` | no |
@@ -64,7 +66,6 @@
 | <a name="input_private_subnets"></a> [private\_subnets](#input\_private\_subnets) | A list of private subnets inside the VPC | `list(string)` | `[]` | no |
 | <a name="input_public_subnets"></a> [public\_subnets](#input\_public\_subnets) | A list of public subnets inside the VPC | `list(string)` | `[]` | no |
 | <a name="input_region"></a> [region](#input\_region) | AWS region to deploy resources | `string` | `""` | no |
-| <a name="input_secret_key"></a> [secret\_key](#input\_secret\_key) | AWS IAM secret key | `string` | `""` | no |
 | <a name="input_vpc_name"></a> [vpc\_name](#input\_vpc\_name) | Name to be used on VPC | `string` | `""` | no |
 
 ## Outputs
