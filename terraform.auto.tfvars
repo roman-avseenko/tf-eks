@@ -1,5 +1,5 @@
 #------------------ AWS provider variables ------------------#
-region = "eu-central-1"
+region = "eu-west-2"
 
 # Resource tag settings to apply across all resources handled by AWS provider
 common_tags = {
