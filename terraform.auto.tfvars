@@ -36,3 +36,11 @@ eks_worker_groups_launch_template = [
     asg_max_size  = 2
   }
 ]
+
+map_users = [
+  {
+    userarn  = "arn:aws:iam::388503763245:user/roma.avseenko"
+    username = "roma.avseenko"
+    groups   = ["system:masters"]
+  }
+]

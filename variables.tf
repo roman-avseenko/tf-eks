@@ -49,3 +49,14 @@ variable "eks_worker_groups_launch_template" {
   type        = any
   default     = []
 }
+
+variable "map_users" {
+  description = "IAM users to add to the aws-auth ConfigMap."
+  type = list(object({
+    userarn  = string
+    username = string
+    groups   = list(string)
+  }))
+
+  default = []
+}

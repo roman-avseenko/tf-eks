@@ -63,6 +63,7 @@
 | <a name="input_cluster_name"></a> [cluster\_name](#input\_cluster\_name) | Name of the EKS cluster | `string` | `""` | no |
 | <a name="input_common_tags"></a> [common\_tags](#input\_common\_tags) | Tags for all AWS provided resources | `map(string)` | `{}` | no |
 | <a name="input_eks_worker_groups_launch_template"></a> [eks\_worker\_groups\_launch\_template](#input\_eks\_worker\_groups\_launch\_template) | A list of maps defining worker group configurations to be defined using AWS Launch Templates. | `any` | `[]` | no |
+| <a name="input_map_users"></a> [map\_users](#input\_map\_users) | IAM users to add to the aws-auth ConfigMap. | <pre>list(object({<br>    userarn  = string<br>    username = string<br>    groups   = list(string)<br>  }))</pre> | `[]` | no |
 | <a name="input_private_subnets"></a> [private\_subnets](#input\_private\_subnets) | A list of private subnets inside the VPC | `list(string)` | `[]` | no |
 | <a name="input_public_subnets"></a> [public\_subnets](#input\_public\_subnets) | A list of public subnets inside the VPC | `list(string)` | `[]` | no |
 | <a name="input_region"></a> [region](#input\_region) | AWS region to deploy resources | `string` | `""` | no |
