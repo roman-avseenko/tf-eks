@@ -26,7 +26,7 @@ resource "helm_release" "ingress_controller" {
   create_namespace = true
   namespace        = "ingress-nginx"
 
-  depends_on = [module.eks_cluster]
+  depends_on = [module.eks_cluster, helm_release.cluster_autoscaler]
 }
 
 #Deploying metrics server in k8s cluster
@@ -41,5 +41,5 @@ resource "helm_release" "metrics_server" {
     value = true
   }
 
-  depends_on = [module.eks_cluster]
+  depends_on = [module.eks_cluster, helm_release.cluster_autoscaler]
 }
